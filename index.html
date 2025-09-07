@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SAME Labels store</title>
+  <title>Sea Food Goood | БОТ</title>
   <style>
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -128,10 +128,10 @@
 
   <!-- Header -->
   <div class="header">
-    <div class="back-btn" onclick="goBack()">⬅️ Back</div>
+    <div class="back-btn" onclick="goBack()">← Назад</div>
     <div>
-      <div class="title">SAME Labels store</div>
-      <div class="subtitle">mini app</div>
+      <div class="title">Sea Food Goood</div>
+      <div class="subtitle">магазин</div>
     </div>
     <div>⋮</div>
   </div>
@@ -139,66 +139,95 @@
   <!-- Catalog -->
   <div class="menu" id="catalog">
     <!-- Категории -->
-    <div class="category-item" onclick="toggleSubmenu('clothing')">
-      <span class="category-name">Одежда</span>
-      <span class="count">882</span>
+    <div class="category-item" onclick="toggleSubmenu('fish')">
+      <span class="category-name">Рыба</span>
+      <span class="count">156</span>
     </div>
 
-    <div class="submenu" id="clothing">
-      <div class="category-item" onclick="navigateTo('all-clothing')">
+    <div class="submenu" id="fish">
+      <div class="category-item" onclick="navigateTo('all-fish')">
         <span class="category-name">Все позиции</span>
       </div>
-      <div class="category-item" onclick="navigateTo('pants')">
-        <span class="category-name">Брюки</span>
-        <span class="count">4</span>
+      <div class="category-item" onclick="navigateTo('fresh-fish')">
+        <span class="category-name">Свежая рыба</span>
+        <span class="count">89</span>
       </div>
-      <div class="category-item" onclick="navigateTo('tops')">
-        <span class="category-name">Верхняя одежда</span>
-        <span class="count">77</span>
+      <div class="category-item" onclick="navigateTo('frozen-fish')">
+        <span class="category-name">Замороженная рыба</span>
+        <span class="count">67</span>
       </div>
-      <div class="category-item" onclick="navigateTo('jeans')">
-        <span class="category-name">Джинсы</span>
-        <span class="count">10</span>
-      </div>
-      <div class="category-item" onclick="toggleSubmenu('tshirts')">
-        <span class="category-name">Майки и футболки</span>
-        <span class="count">370</span>
-      </div>
+    </div>
 
-      <div class="submenu" id="tshirts">
-        <div class="category-item" onclick="navigateTo('all-tshirts')">
-          <span class="category-name">Все позиции</span>
-        </div>
-        <div class="category-item" onclick="navigateTo('longsleeve')">
-          <span class="category-name">Лонгсливы</span>
-          <span class="count">23</span>
-        </div>
-        <div class="category-item" onclick="navigateTo('tank-tops')">
-          <span class="category-name">Майки</span>
-          <span class="count">2</span>
-        </div>
-        <div class="category-item" onclick="navigateTo('polo-17')">
-          <span class="category-name">Поло</span>
-          <span class="count">17</span>
-        </div>
-        <div class="category-item" onclick="navigateTo('polo-12')">
-          <span class="category-name">Поло</span>
-          <span class="count">12</span>
-        </div>
-        <div class="category-item" onclick="navigateTo('tshirts')">
-          <span class="category-name">Футболки</span>
-          <span class="count">316</span>
-        </div>
-      </div>
+    <div class="category-item" onclick="toggleSubmenu('seafood')">
+      <span class="category-name">Морепродукты</span>
+      <span class="count">234</span>
+    </div>
 
-      <div class="category-item" onclick="navigateTo('swimsuits')">
-        <span class="category-name">Плавки и пляжные шорты</span>
-        <span class="count">2</span>
+    <div class="submenu" id="seafood">
+      <div class="category-item" onclick="navigateTo('all-seafood')">
+        <span class="category-name">Все позиции</span>
       </div>
-      <div class="category-item" onclick="navigateTo('shirts')">
-        <span class="category-name">Рубашки</span>
-        <span class="count">35</span>
+      <div class="category-item" onclick="navigateTo('shrimp')">
+        <span class="category-name">Креветки</span>
+        <span class="count">45</span>
       </div>
+      <div class="category-item" onclick="navigateTo('mussels')">
+        <span class="category-name">Мидии</span>
+        <span class="count">23</span>
+      </div>
+      <div class="category-item" onclick="navigateTo('squid')">
+        <span class="category-name">Кальмары</span>
+        <span class="count">34</span>
+      </div>
+      <div class="category-item" onclick="navigateTo('octopus')">
+        <span class="category-name">Осьминоги</span>
+        <span class="count">12</span>
+      </div>
+      <div class="category-item" onclick="navigateTo('crab')">
+        <span class="category-name">Крабы</span>
+        <span class="count">67</span>
+      </div>
+      <div class="category-item" onclick="navigateTo('lobster')">
+        <span class="category-name">Лобстеры</span>
+        <span class="count">15</span>
+      </div>
+      <div class="category-item" onclick="navigateTo('scallops')">
+        <span class="category-name">Гребешки</span>
+        <span class="count">38</span>
+      </div>
+    </div>
+
+    <div class="category-item" onclick="toggleSubmenu('caviar')">
+      <span class="category-name">Икра</span>
+      <span class="count">78</span>
+    </div>
+
+    <div class="submenu" id="caviar">
+      <div class="category-item" onclick="navigateTo('all-caviar')">
+        <span class="category-name">Вся икра</span>
+      </div>
+      <div class="category-item" onclick="navigateTo('red-caviar')">
+        <span class="category-name">Красная икра</span>
+        <span class="count">32</span>
+      </div>
+      <div class="category-item" onclick="navigateTo('black-caviar')">
+        <span class="category-name">Черная икра</span>
+        <span class="count">28</span>
+      </div>
+      <div class="category-item" onclick="navigateTo('salted-caviar')">
+        <span class="category-name">Соленая икра</span>
+        <span class="count">18</span>
+      </div>
+    </div>
+
+    <div class="category-item" onclick="navigateTo('prepared')">
+      <span class="category-name">Готовые блюда</span>
+      <span class="count">45</span>
+    </div>
+
+    <div class="category-item" onclick="navigateTo('sauces')">
+      <span class="category-name">Соусы и приправы</span>
+      <span class="count">23</span>
     </div>
   </div>
 
