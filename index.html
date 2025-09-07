@@ -1,41 +1,262 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sea Food Goood - Каталог</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SAME Labels store</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      margin: 0;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 20px;
+      background-color: #ffffff;
+      border-bottom: 1px solid #e0e0e0;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+
+    .back-btn {
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+    }
+
+    .title {
+      font-weight: 600;
+      font-size: 18px;
+    }
+
+    .subtitle {
+      font-size: 14px;
+      color: #777;
+    }
+
+    .menu {
+      padding: 20px;
+    }
+
+    .category-item {
+      padding: 16px 0;
+      border-bottom: 1px solid #e0e0e0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    .category-item:hover {
+      background-color: #f0f0f0;
+    }
+
+    .category-name {
+      font-size: 16px;
+    }
+
+    .count {
+      font-size: 14px;
+      color: #777;
+    }
+
+    .submenu {
+      margin-left: 40px;
+      display: none;
+    }
+
+    .submenu.active {
+      display: block;
+    }
+
+    .footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-color: white;
+      padding: 12px;
+      display: flex;
+      justify-content: space-around;
+      border-top: 1px solid #e0e0e0;
+      z-index: 100;
+    }
+
+    .footer a {
+      text-decoration: none;
+      color: #555;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 12px;
+    }
+
+    .footer a.active {
+      color: #ff3b58;
+    }
+
+    .footer svg {
+      width: 24px;
+      height: 24px;
+      margin-bottom: 4px;
+    }
+
+    .badge {
+      position: absolute;
+      top: -8px;
+      right: -8px;
+      background-color: #ff3b58;
+      color: white;
+      border-radius: 50%;
+      width: 18px;
+      height: 18px;
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <header class="header">
-            <h1>🛍️ Каталог Sea Food Goood</h1>
-            <p>Свежие морепродукты с доставкой</p>
-        </header>
 
-        <div class="catalog-container">
-            <!-- Левое меню категорий -->
-            <div class="sidebar" id="categories-menu">
-                <div class="loading">Загрузка категорий...</div>
-            </div>
+  <!-- Header -->
+  <div class="header">
+    <div class="back-btn" onclick="goBack()">⬅️ Back</div>
+    <div>
+      <div class="title">SAME Labels store</div>
+      <div class="subtitle">mini app</div>
+    </div>
+    <div>⋮</div>
+  </div>
 
-            <!-- Правая часть с товарами -->
-            <div class="products-container">
-                <div class="category-header">
-                    <h2 id="category-title">Все категории</h2>
-                </div>
-
-                <div class="products-grid" id="products-grid">
-                    <div class="loading">Загрузка товаров...</div>
-                </div>
-            </div>
-        </div>
-
-        <footer class="footer">
-            <p>Sea Food Goood © 2024 | Доставка морепродуктов в Щёлково</p>
-        </footer>
+  <!-- Catalog -->
+  <div class="menu" id="catalog">
+    <!-- Категории -->
+    <div class="category-item" onclick="toggleSubmenu('clothing')">
+      <span class="category-name">Одежда</span>
+      <span class="count">882</span>
     </div>
 
-    <script src="script.js"></script>
+    <div class="submenu" id="clothing">
+      <div class="category-item" onclick="navigateTo('all-clothing')">
+        <span class="category-name">Все позиции</span>
+      </div>
+      <div class="category-item" onclick="navigateTo('pants')">
+        <span class="category-name">Брюки</span>
+        <span class="count">4</span>
+      </div>
+      <div class="category-item" onclick="navigateTo('tops')">
+        <span class="category-name">Верхняя одежда</span>
+        <span class="count">77</span>
+      </div>
+      <div class="category-item" onclick="navigateTo('jeans')">
+        <span class="category-name">Джинсы</span>
+        <span class="count">10</span>
+      </div>
+      <div class="category-item" onclick="toggleSubmenu('tshirts')">
+        <span class="category-name">Майки и футболки</span>
+        <span class="count">370</span>
+      </div>
+
+      <div class="submenu" id="tshirts">
+        <div class="category-item" onclick="navigateTo('all-tshirts')">
+          <span class="category-name">Все позиции</span>
+        </div>
+        <div class="category-item" onclick="navigateTo('longsleeve')">
+          <span class="category-name">Лонгсливы</span>
+          <span class="count">23</span>
+        </div>
+        <div class="category-item" onclick="navigateTo('tank-tops')">
+          <span class="category-name">Майки</span>
+          <span class="count">2</span>
+        </div>
+        <div class="category-item" onclick="navigateTo('polo-17')">
+          <span class="category-name">Поло</span>
+          <span class="count">17</span>
+        </div>
+        <div class="category-item" onclick="navigateTo('polo-12')">
+          <span class="category-name">Поло</span>
+          <span class="count">12</span>
+        </div>
+        <div class="category-item" onclick="navigateTo('tshirts')">
+          <span class="category-name">Футболки</span>
+          <span class="count">316</span>
+        </div>
+      </div>
+
+      <div class="category-item" onclick="navigateTo('swimsuits')">
+        <span class="category-name">Плавки и пляжные шорты</span>
+        <span class="count">2</span>
+      </div>
+      <div class="category-item" onclick="navigateTo('shirts')">
+        <span class="category-name">Рубашки</span>
+        <span class="count">35</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer Navigation -->
+  <div class="footer">
+    <a href="#" onclick="navigateTo('home')">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3.642l.358-2h-4v-1.5h-2v1.5h-2v-1.5h-2v1.5h-4l-.358 2H7.358l-.358 2h4v8z"/></svg>
+      <span>Главная</span>
+    </a>
+    <a href="#" onclick="navigateTo('shop')" class="active">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14h2V5h12V3zm-7 14H9v-2h3v2zm4 0h-2v-2h2v2zm-8 0H5v-2h2v2zm-2-4H5V7h2v6zm14 0h-2V7h2v6zm-8 0h-2V7h2v6zm-8 0H5V7h2v6zm14 0h-2V7h2v6z"/></svg>
+      <span>Магазин</span>
+    </a>
+    <a href="#" onclick="navigateTo('favorites')">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+      <span>Избранное</span>
+    </a>
+    <a href="#" onclick="navigateTo('cart')">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M17 3H7c-1.1 0-2 .9-2 2v4h2V5h8v4h2V5c0-1.1-.9-2-2-2zM9 18h6v-2H9v2zm0-4h6V9H9v5z"/></svg>
+      <span>Корзина</span>
+    </a>
+    <a href="#" onclick="navigateTo('account')">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.33 0-4-1.67-4-4s1.67-4 4-4 4 1.67 4 4-1.67 4-4 4zm0 6c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z"/></svg>
+      <span>Аккаунт</span>
+    </a>
+  </div>
+
+  <script>
+    // Вибрация при клике
+    function vibrate() {
+      if (navigator.vibrate) {
+        navigator.vibrate(20); // 20 мс вибрации
+      }
+    }
+
+    // Открыть/закрыть подменю
+    function toggleSubmenu(id) {
+      const submenu = document.getElementById(id);
+      submenu.classList.toggle('active');
+      vibrate();
+    }
+
+    // Перейти по категории
+    function navigateTo(page) {
+      vibrate();
+      alert(`Переход на страницу: ${page}`);
+      // Здесь можно открыть новую страницу или загрузить данные
+      // Например: window.location.href = `/pages/${page}.html`;
+    }
+
+    // Назад
+    function goBack() {
+      vibrate();
+      window.history.back();
+    }
+
+    // Проверка поддержки вибрации
+    console.log("Вибрация поддерживается:", navigator.vibrate !== undefined);
+  </script>
 </body>
 </html>
